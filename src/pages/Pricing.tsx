@@ -1,23 +1,23 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Check, ChevronRight, Sparkles, Users, Building } from "lucide-react";
+import { Check, ChevronRight, Sparkles, Building, Users } from "lucide-react";
 
 const tiers = [
   {
     name: "Starter",
     audience: "Individual",
-    description: "Perfect for individuals looking to build personal wellbeing routines.",
+    description: "For individuals exploring self-guided wellbeing routines.",
     price: "Free",
     period: "during early access",
     features: [
       "Daily check-ins",
       "Personalised 7-day plans",
-      "Core routine library",
-      "Weekly summaries",
-      "Basic mood tracking",
+      "Core routine library (breathing, journaling)",
+      "Weekly mood summaries",
+      "Basic progress tracking",
     ],
-    cta: "Join Early Access",
+    cta: "Request Access",
     ctaLink: "/contact",
     popular: false,
     icon: Sparkles,
@@ -25,16 +25,16 @@ const tiers = [
   {
     name: "Plus",
     audience: "Individual",
-    description: "For those who want deeper insights and more advanced features.",
-    price: "TBC",
-    period: "per month",
+    description: "For those who want deeper insights and more routine variety.",
+    price: "£9",
+    period: "per month (expected)",
     features: [
       "Everything in Starter",
-      "Extended routine library",
-      "Advanced analytics",
+      "Full routine library (focus, sleep, gratitude)",
+      "Advanced analytics and trends",
       "Custom routine creation",
-      "Priority support",
       "Monthly wellbeing report",
+      "Priority email support",
     ],
     cta: "Join Waitlist",
     ctaLink: "/contact",
@@ -44,21 +44,40 @@ const tiers = [
   {
     name: "Partner",
     audience: "Organisations",
-    description: "Bring Calmnest to your team with tools designed for workplace wellbeing.",
+    description: "Bring Calmnest to your team with tools for workplace wellbeing.",
     price: "Custom",
     period: "per organisation",
     features: [
       "Everything in Plus",
-      "Team dashboard",
+      "Team admin dashboard",
       "Anonymous aggregated insights",
-      "Admin controls",
-      "Onboarding support",
+      "Onboarding and training support",
+      "Custom branding options",
       "Dedicated account manager",
     ],
     cta: "Contact Us",
     ctaLink: "/contact",
     popular: false,
     icon: Building,
+  },
+];
+
+const pricingFaqs = [
+  {
+    q: "Is Calmnest really free during early access?",
+    a: "Yes. Our Starter plan is completely free during the early access period. We want you to experience the full value of Calmnest before we finalise pricing. Early access users will receive preferential rates when we launch paid plans.",
+  },
+  {
+    q: "What happens after early access ends?",
+    a: "We'll give you at least 30 days' notice before any pricing changes. Early access users will be offered discounted rates, and you'll always have the option to export your data or continue on a free tier with limited features.",
+  },
+  {
+    q: "Can I switch plans later?",
+    a: "Absolutely. You can upgrade or downgrade your plan at any time. Changes take effect at the start of your next billing period, and we'll ensure the transition is seamless.",
+  },
+  {
+    q: "Is there a contract for the Partner plan?",
+    a: "We offer flexible terms for organisations, typically starting with a 3-month pilot. Contact us to discuss what works best for your team's needs and budget.",
   },
 ];
 
@@ -76,7 +95,7 @@ export default function Pricing() {
               Simple, transparent pricing
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Choose the plan that fits your needs. All plans include our core features with no hidden fees.
+              Start free during early access. Upgrade when you're ready for more features. No hidden fees.
             </p>
           </div>
         </div>
@@ -85,11 +104,11 @@ export default function Pricing() {
       {/* Early Access Banner */}
       <section className="py-6 bg-primary">
         <div className="container-wide">
-          <div className="flex items-center justify-center gap-3 text-primary-foreground">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 text-primary-foreground text-center sm:text-left">
             <Sparkles className="w-5 h-5" />
-            <p className="font-medium">Early Access Pricing for Pilots</p>
-            <span className="text-primary-foreground/70">—</span>
-            <p className="text-primary-foreground/80">Join now and lock in special rates</p>
+            <p className="font-medium">Early Access Pricing</p>
+            <span className="hidden sm:inline text-primary-foreground/70">—</span>
+            <p className="text-primary-foreground/80">Join now and lock in special rates when we launch</p>
           </div>
         </div>
       </section>
@@ -108,7 +127,7 @@ export default function Pricing() {
                 {tier.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                     <span className="px-4 py-1 rounded-full bg-primary text-primary-foreground text-sm font-medium">
-                      Most Popular
+                      Recommended
                     </span>
                   </div>
                 )}
@@ -165,27 +184,10 @@ export default function Pricing() {
             </h2>
           </div>
           <div className="space-y-6">
-            {[
-              {
-                q: "Is Calmnest really free during early access?",
-                a: "Yes! Our Starter plan is completely free during the early access period. We want you to experience the full value of Calmnest before we finalise pricing.",
-              },
-              {
-                q: "What happens after early access ends?",
-                a: "Early access users will receive special pricing when we launch. We'll give you plenty of notice before any changes, and your data will always be yours.",
-              },
-              {
-                q: "Can I switch plans later?",
-                a: "Absolutely. You can upgrade or downgrade your plan at any time. We'll make sure the transition is seamless.",
-              },
-              {
-                q: "Is there a contract for the Partner plan?",
-                a: "We offer flexible terms for organisations. Contact us to discuss what works best for your team.",
-              },
-            ].map((item, index) => (
+            {pricingFaqs.map((item, index) => (
               <div key={index} className="card-calm">
                 <h3 className="font-semibold text-foreground mb-2">{item.q}</h3>
-                <p className="text-muted-foreground">{item.a}</p>
+                <p className="text-muted-foreground leading-relaxed">{item.a}</p>
               </div>
             ))}
           </div>
@@ -202,16 +204,26 @@ export default function Pricing() {
             <p className="text-lg text-primary-foreground/80 mb-8">
               Join early access and be among the first to experience Calmnest.
             </p>
-            <Button
-              variant="secondary"
-              size="lg"
-              className="bg-card text-foreground hover:bg-card/90"
-              asChild
-            >
-              <Link to="/contact">
-                Join Early Access <ChevronRight className="w-5 h-5" />
-              </Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                variant="secondary"
+                size="lg"
+                className="bg-card text-foreground hover:bg-card/90"
+                asChild
+              >
+                <Link to="/contact">
+                  Request Access <ChevronRight className="w-5 h-5" />
+                </Link>
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+                asChild
+              >
+                <Link to="/demo">View Demo</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

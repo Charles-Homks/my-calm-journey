@@ -10,6 +10,7 @@ import {
   Send,
   AlertCircle,
   CheckCircle,
+  Phone,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -18,8 +19,9 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
+    organisation: "",
+    role: "",
     email: "",
-    subject: "",
     message: "",
   });
 
@@ -32,10 +34,10 @@ export default function Contact() {
 
     toast({
       title: "Message sent!",
-      description: "Thank you for reaching out. We'll get back to you soon.",
+      description: "Thank you for reaching out. We'll get back to you within 48 hours.",
     });
 
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setFormData({ name: "", organisation: "", role: "", email: "", message: "" });
     setIsSubmitting(false);
   };
 
@@ -58,10 +60,10 @@ export default function Contact() {
               Contact Us
             </span>
             <h1 className="text-4xl md:text-5xl font-display font-semibold text-foreground mb-6">
-              We'd love to hear from you
+              Get in touch
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Whether you're interested in early access, have a question, or want to partner with us, we're here to help.
+              Interested in early access, have a question about Calmnest, or want to explore a partnership? We'd love to hear from you.
             </p>
           </div>
         </div>
@@ -79,53 +81,63 @@ export default function Contact() {
                     Send us a message
                   </h2>
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Name <span className="text-destructive">*</span></Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Your full name"
+                        required
+                        className="rounded-xl"
+                      />
+                    </div>
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="name">Name</Label>
+                        <Label htmlFor="organisation">Organisation <span className="text-muted-foreground text-sm">(optional)</span></Label>
                         <Input
-                          id="name"
-                          name="name"
-                          value={formData.name}
+                          id="organisation"
+                          name="organisation"
+                          value={formData.organisation}
                           onChange={handleChange}
-                          placeholder="Your name"
-                          required
+                          placeholder="Your company or school"
                           className="rounded-xl"
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
+                        <Label htmlFor="role">Role <span className="text-muted-foreground text-sm">(optional)</span></Label>
                         <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          value={formData.email}
+                          id="role"
+                          name="role"
+                          value={formData.role}
                           onChange={handleChange}
-                          placeholder="you@example.com"
-                          required
+                          placeholder="Your job title"
                           className="rounded-xl"
                         />
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="subject">Subject</Label>
+                      <Label htmlFor="email">Email <span className="text-destructive">*</span></Label>
                       <Input
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
                         onChange={handleChange}
-                        placeholder="What's this about?"
+                        placeholder="you@example.com"
                         required
                         className="rounded-xl"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
+                      <Label htmlFor="message">Message <span className="text-destructive">*</span></Label>
                       <Textarea
                         id="message"
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        placeholder="Tell us how we can help..."
+                        placeholder="Tell us how we can help. Are you interested in early access, a partnership, or do you have a question?"
                         rows={5}
                         required
                         className="rounded-xl resize-none"
@@ -167,12 +179,25 @@ export default function Contact() {
                 <div className="card-calm">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-xl bg-sage-light flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">WhatsApp</h3>
+                      <p className="text-muted-foreground text-sm">+44 7XXX XXXXXX</p>
+                      <p className="text-xs text-muted-foreground mt-1">For quick questions only</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card-calm">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-sage-light flex items-center justify-center flex-shrink-0">
                       <MessageCircle className="w-5 h-5 text-primary" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Early Access</h3>
                       <p className="text-muted-foreground text-sm">
-                        Interested in joining our early access programme? Let us know in your message!
+                        Interested in joining our pilot programme? Let us know in your message and we'll be in touch with next steps.
                       </p>
                     </div>
                   </div>

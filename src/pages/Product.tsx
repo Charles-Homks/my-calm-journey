@@ -14,45 +14,62 @@ import {
   Sparkles,
   Users,
   Building,
+  Zap,
+  CheckCircle,
 } from "lucide-react";
 
 const modules = [
   {
     icon: MessageCircle,
     title: "Daily Check-ins",
-    description: "Start each day with a gentle 2-minute reflection. Our AI asks thoughtful questions to understand how you're feeling, what's on your mind, and what support you might need.",
-    features: ["Mood tracking", "Energy levels", "Stress indicators", "Sleep quality"],
+    description: "Start each day with a gentle 2-minute reflection. Answer thoughtful questions about your mood, energy, and focus. Your responses are processed by our AI to understand what support you need.",
+    features: [
+      "Mood tracking across 4 states",
+      "Energy level slider",
+      "Focus and stress indicators",
+      "Optional sleep quality log",
+    ],
   },
   {
     icon: BookOpen,
     title: "Routine Library",
-    description: "Access a curated collection of guided activities designed by wellbeing experts. Each routine is crafted to fit into your day, whether you have 2 minutes or 20.",
+    description: "Access a curated collection of guided activities designed for busy schedules. Each routine includes clear instructions, timers, and progress tracking.",
     features: [
-      { icon: Wind, label: "Breathing exercises" },
+      { icon: Wind, label: "Breathing exercises (2-10 mins)" },
       { icon: PenTool, label: "Journaling prompts" },
-      { icon: Moon, label: "Sleep rituals" },
-      { icon: Brain, label: "Focus sessions" },
+      { icon: Moon, label: "Sleep wind-down rituals" },
+      { icon: Brain, label: "Focus and concentration sessions" },
     ],
   },
   {
     icon: Calendar,
     title: "Personalised Plans",
-    description: "Based on your check-ins, Calmnest creates a personalised 7-day calm plan. Each plan adapts to your goals, whether you want to reduce stress, improve sleep, or boost focus.",
-    features: ["AI-generated plans", "Adaptive scheduling", "Goal tracking", "Progress adjustments"],
+    description: "Based on your check-ins, Calmnest creates a 7-day calm plan. Each plan adapts to your goals—whether you want to reduce stress, improve sleep, or boost focus.",
+    features: [
+      "AI-generated weekly schedules",
+      "Flexible timing options",
+      "Goal tracking and adjustments",
+      "Progress-based recommendations",
+    ],
   },
   {
     icon: BarChart3,
     title: "Weekly Summaries",
-    description: "Every week, receive insights about your wellbeing journey. See patterns in your mood, celebrate your wins, and understand what routines work best for you.",
-    features: ["Mood patterns", "Routine completion", "Personal insights", "Trend analysis"],
+    description: "Every week, receive insights about your wellbeing journey. See patterns in your mood, understand what routines work best, and celebrate your consistency.",
+    features: [
+      "Mood trend visualisation",
+      "Routine completion rates",
+      "Personalised insights",
+      "Week-over-week comparisons",
+    ],
   },
 ];
 
 const roadmap = [
-  { status: "now", title: "Individual Wellbeing", description: "Personal check-ins, routines, and plans for everyday calm" },
-  { status: "soon", title: "Advanced Analytics", description: "Deeper insights into your wellbeing patterns over time" },
-  { status: "future", title: "Workplace Edition", description: "Team wellbeing tools for organisations and HR leaders" },
-  { status: "future", title: "Community Features", description: "Optional shared challenges and group accountability" },
+  { status: "now", title: "Core Wellbeing Features", description: "Daily check-ins, routine library, personalised plans, and weekly summaries" },
+  { status: "soon", title: "Advanced Analytics", description: "Deeper pattern recognition, long-term trend analysis, and exportable reports" },
+  { status: "soon", title: "Custom Routine Builder", description: "Create and save your own routines with personalised timings and prompts" },
+  { status: "future", title: "Workplace Edition", description: "Team wellbeing dashboards, anonymous insights, and admin tools for organisations" },
 ];
 
 export default function Product() {
@@ -69,7 +86,7 @@ export default function Product() {
               Everything you need for <span className="text-primary">daily calm</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Discover the features that make Calmnest your trusted wellbeing companion. From daily check-ins to personalised plans, we've designed every detail with your peace of mind in focus.
+              Calmnest combines daily check-ins, guided routines, and AI personalisation to help you build sustainable wellbeing habits. Here's what's inside.
             </p>
           </div>
         </div>
@@ -98,34 +115,37 @@ export default function Product() {
                   <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                     {module.description}
                   </p>
-                  <div className="grid grid-cols-2 gap-3">
+                  <ul className="space-y-3">
                     {module.features.map((feature, featureIndex) => (
-                      <div
+                      <li
                         key={featureIndex}
-                        className="flex items-center gap-2 p-3 rounded-xl bg-sage-light/50"
+                        className="flex items-center gap-3"
                       >
                         {typeof feature === "string" ? (
                           <>
-                            <Sparkles className="w-4 h-4 text-primary" />
-                            <span className="text-sm text-foreground">{feature}</span>
+                            <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                            <span className="text-foreground">{feature}</span>
                           </>
                         ) : (
                           <>
-                            <feature.icon className="w-4 h-4 text-primary" />
-                            <span className="text-sm text-foreground">{feature.label}</span>
+                            <feature.icon className="w-5 h-5 text-primary flex-shrink-0" />
+                            <span className="text-foreground">{feature.label}</span>
                           </>
                         )}
-                      </div>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
                 <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                  <div className="card-calm shadow-card aspect-square flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-24 h-24 rounded-3xl bg-sage-light flex items-center justify-center mx-auto mb-4">
-                        <module.icon className="w-12 h-12 text-primary" />
+                  <div className="card-calm shadow-card p-8">
+                    <div className="aspect-square flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-24 h-24 rounded-3xl bg-sage-light flex items-center justify-center mx-auto mb-4">
+                          <module.icon className="w-12 h-12 text-primary" />
+                        </div>
+                        <p className="text-lg font-medium text-foreground">{module.title}</p>
+                        <p className="text-muted-foreground text-sm">Core module</p>
                       </div>
-                      <p className="text-muted-foreground">Feature illustration</p>
                     </div>
                   </div>
                 </div>
@@ -135,15 +155,49 @@ export default function Product() {
         </div>
       </section>
 
-      {/* Roadmap */}
+      {/* AI Section */}
       <section className="section-padding bg-cream-dark">
+        <div className="container-wide">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="w-16 h-16 rounded-2xl bg-sage-light flex items-center justify-center mx-auto mb-6">
+                <Sparkles className="w-8 h-8 text-primary" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-display font-semibold text-foreground mb-4">
+                Powered by AI Personalisation
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Calmnest uses machine learning to understand your patterns and recommend routines that work for you—not generic advice.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { icon: Brain, title: "Pattern Recognition", description: "Identifies what affects your mood and energy based on check-in data" },
+                { icon: Zap, title: "Adaptive Plans", description: "Your 7-day plan evolves based on what routines you complete and enjoy" },
+                { icon: BarChart3, title: "Trend Analysis", description: "Spots long-term patterns to help you understand your wellbeing" },
+              ].map((item, index) => (
+                <div key={index} className="card-calm text-center">
+                  <div className="w-12 h-12 rounded-xl bg-sage-light flex items-center justify-center mx-auto mb-4">
+                    <item.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Roadmap */}
+      <section className="section-padding bg-background">
         <div className="container-wide">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-display font-semibold text-foreground mb-4">
               Product Roadmap
             </h2>
             <p className="text-lg text-muted-foreground">
-              We're constantly improving Calmnest. Here's what we're working on.
+              We're constantly improving Calmnest. Here's what we're working on next.
             </p>
           </div>
           <div className="max-w-3xl mx-auto">
@@ -151,7 +205,7 @@ export default function Product() {
               {roadmap.map((item, index) => (
                 <div key={index} className="card-calm flex items-start gap-4">
                   <div
-                    className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    className={`px-3 py-1 rounded-full text-xs font-medium flex-shrink-0 ${
                       item.status === "now"
                         ? "bg-primary text-primary-foreground"
                         : item.status === "soon"
@@ -166,10 +220,7 @@ export default function Product() {
                     <p className="text-sm text-muted-foreground">{item.description}</p>
                   </div>
                   {item.status === "future" && item.title.includes("Workplace") && (
-                    <Building className="w-5 h-5 text-muted-foreground" />
-                  )}
-                  {item.status === "future" && item.title.includes("Community") && (
-                    <Users className="w-5 h-5 text-muted-foreground" />
+                    <Building className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                   )}
                 </div>
               ))}
@@ -195,8 +246,8 @@ export default function Product() {
                 className="bg-card text-foreground hover:bg-card/90"
                 asChild
               >
-                <Link to="/demo">
-                  View Demo <ChevronRight className="w-5 h-5" />
+                <Link to="/contact">
+                  Request Access <ChevronRight className="w-5 h-5" />
                 </Link>
               </Button>
               <Button
@@ -205,7 +256,7 @@ export default function Product() {
                 className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
                 asChild
               >
-                <Link to="/contact">Join Early Access</Link>
+                <Link to="/demo">View Demo</Link>
               </Button>
             </div>
           </div>
