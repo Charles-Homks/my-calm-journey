@@ -39,7 +39,7 @@ const values = [
 
 const teamMembers = [
   {
-    name: "Founder",
+    name: "Donatus Abbah",
     role: "Founder & CEO",
     bio: "Experienced in product development and passionate about making wellbeing support accessible. Building Calmnest to bridge the gap between self-care and professional support.",
     placeholder: true,
