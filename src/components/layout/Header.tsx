@@ -51,7 +51,7 @@ export function Header() {
             <Link to="/demo">View Demo</Link>
           </Button>
           <Button size="sm" asChild>
-            <Link to="/contact">Join Early Access</Link>
+            <Link to="/contact">Request Access</Link>
           </Button>
         </div>
 
@@ -95,7 +95,7 @@ export function Header() {
               </Button>
               <Button asChild>
                 <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-                  Join Early Access
+                  Request Access
                 </Link>
               </Button>
             </div>

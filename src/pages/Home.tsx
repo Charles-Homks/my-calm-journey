@@ -18,6 +18,12 @@ import {
   AlertTriangle,
   Lock,
   Users,
+  Briefcase,
+  GraduationCap,
+  Home as HomeIcon,
+  Zap,
+  TrendingUp,
+  Target,
 } from "lucide-react";
 import {
   Accordion,
@@ -46,16 +52,16 @@ export default function Home() {
               AI-Powered Wellbeing Support
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold text-foreground leading-tight mb-6">
-              Find your calm, <br className="hidden sm:block" />
-              <span className="text-primary">one day at a time</span>
+              Build daily calm with <br className="hidden sm:block" />
+              <span className="text-primary">personalised routines</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-              Calmnest helps you build sustainable wellbeing routines through personalised daily check-ins and guided self-care activities.
+              Calmnest helps you reduce stress, improve focus, and sleep better through AI-generated daily check-ins and guided self-care activities.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="lg" asChild>
                 <Link to="/contact">
-                  Join Early Access <ChevronRight className="w-5 h-5" />
+                  Request Access <ChevronRight className="w-5 h-5" />
                 </Link>
               </Button>
               <Button variant="hero-outline" size="lg" asChild>
@@ -72,18 +78,17 @@ export default function Home() {
         <div className="container-wide">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-display font-semibold text-foreground mb-4">
-              Modern life is overwhelming
+              You're not alone in feeling overwhelmed
             </h2>
             <p className="text-lg text-muted-foreground">
-              You're not alone if you feel this way.
+              Modern life creates challenges that affect millions every day.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {[
-              { icon: Brain, title: "Constant stress", description: "Juggling work, life, and everything in between" },
-              { icon: Clock, title: "No time for self-care", description: "Wellbeing always falls to the bottom of the list" },
-              { icon: Calendar, title: "Inconsistent routines", description: "Starting habits but struggling to maintain them" },
-              { icon: MessageCircle, title: "Lack of structure", description: "Not knowing where to begin or what to focus on" },
+              { icon: Brain, title: "Stress builds up", description: "Work demands, life responsibilities, and constant connectivity leave little room for rest" },
+              { icon: Clock, title: "Self-care gets skipped", description: "When time is limited, your wellbeing routines are the first thing to go" },
+              { icon: Calendar, title: "Good habits don't stick", description: "Without structure and accountability, it's hard to maintain consistent routines" },
             ].map((item, index) => (
               <div
                 key={index}
@@ -109,17 +114,17 @@ export default function Home() {
                 The Solution
               </span>
               <h2 className="text-3xl md:text-4xl font-display font-semibold text-foreground mb-6">
-                Your personal wellbeing companion
+                A wellbeing companion that adapts to you
               </h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Calmnest gives you daily check-ins to understand how you're feeling, then creates a personalised 7-day calm plan tailored to your needs.
+                Calmnest uses AI to understand your daily mood and energy levels, then creates a personalised 7-day calm plan with routines that fit your schedule. Each week, your plan adapts based on what's working for you.
               </p>
               <ul className="space-y-4">
                 {[
                   "Quick daily check-ins that take just 2 minutes",
-                  "AI-generated personalised routines for your goals",
-                  "Guided activities for stress, focus, sleep, and reflection",
-                  "Weekly summaries to track your progress",
+                  "AI-generated plans tailored to your stress, focus, and sleep goals",
+                  "Guided activities including breathing, journaling, and focus sessions",
+                  "Weekly summaries showing your patterns and progress",
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
@@ -169,17 +174,17 @@ export default function Home() {
               {
                 icon: MessageCircle,
                 title: "Daily Check-in",
-                description: "A gentle 2-minute reflection to understand how you're feeling and what you need today.",
+                description: "A gentle 2-minute reflection to understand how you're feeling and what you need today. No lengthy questionnaires—just quick, meaningful prompts.",
               },
               {
                 icon: BookOpen,
                 title: "Guided Routines",
-                description: "Breathing exercises, journaling prompts, focus sessions, and sleep rituals tailored to you.",
+                description: "Breathing exercises, journaling prompts, focus sessions, and sleep rituals. Each routine is 5-15 minutes and designed for busy schedules.",
               },
               {
                 icon: BarChart3,
                 title: "Weekly Summary",
-                description: "See your patterns and progress over time with insights that help you understand yourself better.",
+                description: "See your patterns and progress over time. Understand which routines work best for you and celebrate your consistency.",
               },
             ].map((item, index) => (
               <div
@@ -210,10 +215,10 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { step: "1", title: "Check-in", description: "Tell us how you're feeling in a quick daily reflection", icon: MessageCircle },
-              { step: "2", title: "Get your plan", description: "Receive a personalised 7-day calm plan based on your needs", icon: Calendar },
-              { step: "3", title: "Follow routines", description: "Complete gentle activities with guided routine cards", icon: BookOpen },
-              { step: "4", title: "Reflect & grow", description: "Review your progress and celebrate your journey", icon: BarChart3 },
+              { step: "1", title: "Check-in", description: "Answer a few questions about your mood, energy, and focus in under 2 minutes", icon: MessageCircle },
+              { step: "2", title: "Get your plan", description: "Receive a personalised 7-day calm plan with routines matched to your needs", icon: Calendar },
+              { step: "3", title: "Follow routines", description: "Complete guided activities at times that work for you—morning, midday, or evening", icon: BookOpen },
+              { step: "4", title: "Track progress", description: "Review your weekly summary and see how your wellbeing improves over time", icon: BarChart3 },
             ].map((item, index) => (
               <div key={index} className="relative">
                 <div className="card-calm text-center">
@@ -235,6 +240,66 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Who It's For Section */}
+      <section className="section-padding bg-background">
+        <div className="container-wide">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-display font-semibold text-foreground mb-4">
+              Who Calmnest is for
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Built for anyone who wants more structure in their self-care.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {[
+              { icon: Briefcase, title: "Busy Professionals", description: "Manage work stress and build focus habits that fit around meetings and deadlines" },
+              { icon: GraduationCap, title: "Students", description: "Balance academic pressure with routines for concentration, sleep, and mental clarity" },
+              { icon: HomeIcon, title: "Remote Workers", description: "Create boundaries between work and rest with structured morning and evening routines" },
+            ].map((item, index) => (
+              <div key={index} className="card-calm text-center">
+                <div className="w-14 h-14 rounded-2xl bg-sky-light flex items-center justify-center mx-auto mb-4">
+                  <item.icon className="w-7 h-7 text-sky" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Key Features Section */}
+      <section className="section-padding bg-cream-dark">
+        <div className="container-wide">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-display font-semibold text-foreground mb-4">
+              Key features
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {[
+              { icon: Sparkles, title: "AI Personalisation", description: "Routines adapt based on your check-in responses and progress" },
+              { icon: Wind, title: "Breathing Exercises", description: "Guided techniques for stress relief, from box breathing to 4-7-8" },
+              { icon: Moon, title: "Sleep Rituals", description: "Wind-down routines designed to improve your sleep quality" },
+              { icon: Brain, title: "Focus Sessions", description: "Structured deep work and concentration exercises" },
+              { icon: TrendingUp, title: "Progress Tracking", description: "Visual summaries of your mood patterns and routine completion" },
+              { icon: Lock, title: "Private by Default", description: "Your data is encrypted and never sold to third parties" },
+            ].map((item, index) => (
+              <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border/50">
+                <div className="w-10 h-10 rounded-xl bg-sage-light flex items-center justify-center flex-shrink-0">
+                  <item.icon className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Why AI Section */}
       <section className="section-padding bg-background">
         <div className="container-wide">
@@ -248,21 +313,21 @@ export default function Home() {
                   Why AI makes a difference
                 </h2>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Our AI learns from your check-ins to provide truly personalised support. It spots patterns in your mood and energy, suggesting routines that work best for you.
+                  Generic wellbeing advice doesn't work for everyone. Our AI analyses your check-in patterns to understand what affects your mood and energy, then recommends routines that match your actual needs.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4 p-4 rounded-xl bg-sage-light/50">
                     <Sparkles className="w-6 h-6 text-primary mt-0.5" />
                     <div>
-                      <p className="font-medium text-foreground">Personalised recommendations</p>
-                      <p className="text-sm text-muted-foreground">Routines tailored to your unique patterns and preferences</p>
+                      <p className="font-medium text-foreground">Adaptive Recommendations</p>
+                      <p className="text-sm text-muted-foreground">Your plan evolves as you complete routines and log check-ins</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4 p-4 rounded-xl bg-sage-light/50">
                     <Brain className="w-6 h-6 text-primary mt-0.5" />
                     <div>
-                      <p className="font-medium text-foreground">Pattern recognition</p>
-                      <p className="text-sm text-muted-foreground">Understand what affects your wellbeing over time</p>
+                      <p className="font-medium text-foreground">Pattern Recognition</p>
+                      <p className="text-sm text-muted-foreground">Understand what times, activities, and triggers affect your wellbeing</p>
                     </div>
                   </div>
                 </div>
@@ -313,30 +378,81 @@ export default function Home() {
       {/* Proof Section */}
       <section className="section-padding bg-background">
         <div className="container-wide">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
+            <span className="inline-block px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium mb-4">
+              Early Access Open
+            </span>
             <h2 className="text-3xl md:text-4xl font-display font-semibold text-foreground mb-4">
               See Calmnest in action
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Explore how the app helps you build calmer days.
+              Preview the core screens from our app.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "Daily Check-in", description: "A gentle reflection to start your day" },
-              { title: "Your 7-Day Plan", description: "Personalised routines tailored to you" },
-              { title: "Routine Cards", description: "Guided activities for calm and focus" },
+              { 
+                title: "Daily Check-in", 
+                description: "Quick questions about your mood, energy, and what you need today",
+                mockup: (
+                  <div className="p-4 space-y-3">
+                    <p className="text-xs text-muted-foreground">Good morning! How are you feeling?</p>
+                    <div className="flex gap-2">
+                      {["😊", "😐", "😔", "😤"].map((emoji, i) => (
+                        <div key={i} className={`w-10 h-10 rounded-lg flex items-center justify-center text-lg ${i === 0 ? 'bg-primary/20 ring-2 ring-primary' : 'bg-muted'}`}>{emoji}</div>
+                      ))}
+                    </div>
+                    <div className="h-2 bg-muted rounded-full overflow-hidden">
+                      <div className="h-full w-1/3 bg-primary rounded-full" />
+                    </div>
+                    <p className="text-xs text-muted-foreground">Energy level: Moderate</p>
+                  </div>
+                )
+              },
+              { 
+                title: "Your 7-Day Plan", 
+                description: "Personalised routines scheduled across your week",
+                mockup: (
+                  <div className="p-4 space-y-2">
+                    {[
+                      { day: "Mon", routine: "Breathing", time: "8am", done: true },
+                      { day: "Tue", routine: "Focus", time: "10am", done: true },
+                      { day: "Wed", routine: "Journal", time: "9pm", done: false },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-2 p-2 rounded-lg bg-muted/50 text-xs">
+                        <span className="font-medium w-8">{item.day}</span>
+                        <span className="flex-1">{item.routine}</span>
+                        <span className="text-muted-foreground">{item.time}</span>
+                        <div className={`w-4 h-4 rounded-full ${item.done ? 'bg-primary' : 'border-2 border-muted-foreground'}`} />
+                      </div>
+                    ))}
+                  </div>
+                )
+              },
+              { 
+                title: "Weekly Summary", 
+                description: "Track your mood patterns and routine completion",
+                mockup: (
+                  <div className="p-4 space-y-3">
+                    <div className="flex justify-between text-xs">
+                      <span>This week</span>
+                      <span className="text-primary font-medium">+12%</span>
+                    </div>
+                    <div className="flex gap-1 items-end h-12">
+                      {[40, 60, 80, 70, 90, 85, 95].map((h, i) => (
+                        <div key={i} className="flex-1 bg-primary/20 rounded-t" style={{ height: `${h}%` }}>
+                          <div className="w-full bg-primary rounded-t" style={{ height: `${h * 0.7}%` }} />
+                        </div>
+                      ))}
+                    </div>
+                    <p className="text-xs text-muted-foreground">5 routines completed</p>
+                  </div>
+                )
+              },
             ].map((item, index) => (
               <div key={index} className="card-calm">
-                <div className="aspect-[4/3] bg-sage-light/50 rounded-xl mb-4 flex items-center justify-center">
-                  <div className="text-center p-4">
-                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                      {index === 0 && <MessageCircle className="w-8 h-8 text-primary" />}
-                      {index === 1 && <Calendar className="w-8 h-8 text-primary" />}
-                      {index === 2 && <BookOpen className="w-8 h-8 text-primary" />}
-                    </div>
-                    <p className="text-sm text-muted-foreground">Screenshot placeholder</p>
-                  </div>
+                <div className="aspect-[4/3] bg-sage-light/50 rounded-xl mb-4 overflow-hidden">
+                  {item.mockup}
                 </div>
                 <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
                 <p className="text-sm text-muted-foreground">{item.description}</p>
@@ -369,7 +485,7 @@ export default function Home() {
               },
               {
                 question: "Who is Calmnest for?",
-                answer: "Calmnest is designed for anyone looking to build consistent wellbeing routines, manage everyday stress, improve focus, develop better sleep habits, or practice self-reflection. It's ideal for busy professionals, students, and anyone seeking structured self-care.",
+                answer: "Calmnest is designed for busy professionals, students, remote workers, and anyone looking to build consistent wellbeing routines. It's ideal for managing everyday stress, improving focus, developing better sleep habits, or practising self-reflection.",
               },
               {
                 question: "How is my data used?",
@@ -377,11 +493,7 @@ export default function Home() {
               },
               {
                 question: "Is my information private and secure?",
-                answer: "Yes. We take privacy seriously. Your data is encrypted and stored securely. We follow industry best practices for data protection. You can request deletion of your data at any time.",
-              },
-              {
-                question: "Can I use Calmnest at work?",
-                answer: "Absolutely! Many of our routines are designed to fit into a work day, including focus sessions and quick stress-relief exercises. We're also developing a workplace version for teams and organisations.",
+                answer: "Yes. We take privacy seriously. Your data is encrypted and stored securely. We follow industry best practices for data protection. You can request deletion of your data at any time by contacting us.",
               },
             ].map((item, index) => (
               <AccordionItem
@@ -406,21 +518,31 @@ export default function Home() {
         <div className="container-wide">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-display font-semibold text-primary-foreground mb-4">
-              Ready to find your calm?
+              Ready to build your calm?
             </h2>
             <p className="text-lg text-primary-foreground/80 mb-8 max-w-xl mx-auto">
-              Join our early access programme and be the first to experience Calmnest.
+              Join our early access programme and start building sustainable wellbeing routines today.
             </p>
-            <Button
-              variant="secondary"
-              size="lg"
-              className="bg-card text-foreground hover:bg-card/90"
-              asChild
-            >
-              <Link to="/contact">
-                Join Early Access <ChevronRight className="w-5 h-5" />
-              </Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                variant="secondary"
+                size="lg"
+                className="bg-card text-foreground hover:bg-card/90"
+                asChild
+              >
+                <Link to="/contact">
+                  Request Access <ChevronRight className="w-5 h-5" />
+                </Link>
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+                asChild
+              >
+                <Link to="/demo">View Demo</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
