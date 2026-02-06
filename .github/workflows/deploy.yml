@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: "pages"
   cancel-in-progress: true
 
 jobs:
@@ -21,16 +21,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: 20
+          cache: npm
 
-      - name: Install deps
-        run: bun install --frozen-lockfile
+      - name: Install
+        run: npm ci
 
       - name: Build
-        run: bun run build
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -38,8 +39,11 @@ jobs:
           path: dist
 
   deploy:
-    needs: build
     runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy
         id: deployment
